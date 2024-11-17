@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BitCatFan Webpage
 
-## Getting Started
+Welcome to the official **BitCatFan** webpage! ✨
 
-First, run the development server:
+This site is dedicated to the BitCat community, created as a space for all BitCat fans to interact and share. Here, you can find various information and resources about BitCat. We warmly welcome and encourage community contributions, whether through suggestions, code contributions, or ideas. Feel free to submit a PR anytime!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How to Contribute
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+We welcome all BitCat enthusiasts to join and contribute. If you have ideas or see areas for improvement, please submit a PR! We value each contributor's feedback and will review every contribution carefully.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contribution Guidelines
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Fork this repository**: Click the `Fork` button in the top right to copy the repository to your GitHub account.
+2. **Clone your Fork**: Clone the project to your local machine.
+   ```bash
+   git clone https://github.com/bitcatfan/bitcatfan
+   ```
+3. **Create a New Branch**: Create a separate branch for your changes.
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+4. **Commit Your Changes**: After making changes, commit your code.
+   ```bash
+   git add .
+   git commit -m "Add your commit message here"
+   ```
+5. **Push to GitHub**: Push your changes to GitHub.
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+6. **Submit a PR**: On GitHub, open a Pull Request and describe your changes.
 
-## Learn More
+## Community Guidelines
 
-To learn more about Next.js, take a look at the following resources:
+- Please keep discussions friendly and respectful.
+- Ensure submitted code is clean and readable.
+- Suggestions for improvement are welcome, but please keep them relevant to the project’s focus.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact Us
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+If you have any questions or suggestions, feel free to reach out. Thank you for your support and contributions!
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+We look forward to building a better **BitCatFan** webpage with you!

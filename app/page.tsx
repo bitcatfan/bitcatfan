@@ -50,7 +50,7 @@ const TabLink = styled.a`
   text-decoration: none;
   font-weight: bold;
   font-size: 30px;
-  flex: 1 1 calc(20% - 10px);
+  flex: 1 1 calc(16% - 10px);
   justify-content: center;
   min-width: 100px;
 `;
@@ -152,8 +152,11 @@ export default function MemePage() {
     { name: "DexScreener", url: "https://dexscreener.com/solana/ejugqqabckxeiergkufxm45swgvsfoi8p7fnacyertdk", icon: "/icons/dexscreener.svg" },
     { name: "Twitter", url: "https://x.com/Bitcoin", icon: "/icons/x.svg" },
     { name: "Bitcoin", url: "https://bitcoin.org/", icon: "/icons/bitcoin.svg" },
-    { name: "Medium", url: "https://medium.com/@bitcatfan/the-bitcat-phenomenon-a-market-revolution-combining-bitcoin-and-meme-culture-9317e79f8258", icon: "/icons/medium.svg" }
+    { name: "Medium", url: "https://medium.com/@bitcatfan/the-bitcat-phenomenon-a-market-revolution-combining-bitcoin-and-meme-culture-9317e79f8258", icon: "/icons/medium.svg" },
+    { name: "Github", url: "https://github.com/bitcatfan/bitcatfan", icon: "/icons/github.svg" },
   ]);
+
+
 
   const [isTabListOpen, setIsTabListOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -205,7 +208,6 @@ export default function MemePage() {
       )}
 
       <ContentWrapper>
-
         <LeftContentWrapper>
           <TitleText>
             $BITCAT

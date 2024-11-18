@@ -35,3 +35,12 @@ html, body {
 *, *::before, *::after {
   box-sizing: inherit; 
 }
+
+/* styles/globals.css */
+.fixed-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 8px;
+}

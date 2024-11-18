@@ -25,6 +25,7 @@ export default function MemePage() {
   const contractAddress = "4j9bDg7iWNah1Qa61rrqwWZMtEdqV3fV56SzyhfNpump";
   const tokenSupply = "1,000,000,000";
 
+  const logo = "/icons/logo.png";
   const [exchanges] = useState<Exchange[]>([
     { name: "Moonshot", url: "https://moonshot.money/3S9xFzru6ub9TqiEOgXlqhjX?ref=p4IqaqTrT9", icon: "/exchanges/moonshot.svg" },
     { name: "OKX", url: "https://www.okx.com/zh-hans/web3/detail/501/4j9bDg7iWNah1Qa61rrqwWZMtEdqV3fV56SzyhfNpump", icon: "/exchanges/okx.svg" },
@@ -50,7 +51,7 @@ export default function MemePage() {
   const toggleTabList = () => setIsTabListOpen(!isTabListOpen);
 
   const handleClick = (exchange: Exchange) => {
-    window.location.href = exchange.url; 
+    window.location.href = exchange.url;
     console.log(`Navigating to ${exchange.name}`);
   };
 
@@ -100,6 +101,17 @@ export default function MemePage() {
               </div>
             </a>
           ))}
+        </div>
+      )}
+
+      {isMobile && (
+        <div className="fixed-image-container">
+          <Image
+            src={logo}
+            alt="Left corner image"
+            width={100 * 0.6}
+            height={114 * 0.6}
+          />
         </div>
       )}
 
@@ -163,7 +175,7 @@ export default function MemePage() {
             {exchanges.map((exchange, index) => (
               <div key={index}
                 onClick={() => handleClick(exchange)}
-                
+
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -184,17 +196,19 @@ export default function MemePage() {
 
         </div>
 
-        <Tweet id="1857419117025808830" />
+        {!isMobile && <Tweet id="1857419117025808830" />}
       </div>
+
+      {isMobile && <Tweet id="1857419117025808830" />}
 
       <div style={{ display: "flex", flexDirection: "column", gap: "5px", alignItems: "flex-start", width: "100%" }}>
         <div style={{ fontSize: "30px", display: "flex", alignItems: "center", width: "100%", flexWrap: "wrap", textAlign: "center" }}>
-          <p style={{ color: "#555", fontSize: "30px", fontWeight: "bold", margin: "0", flex: "1 1 40%", cursor: "pointer", textAlign: "center" }}>Contract Address:</p>
-          <p onClick={() => copyToClipboard(contractAddress)} style={{ color: "#000000", margin: "0", flex: "1 1 60%", cursor: "pointer", textAlign: "center" }}>{contractAddress}</p>
+          <p style={{ color: "#555", fontSize: isMobile ? "15px" : "30px", fontWeight: "bold", margin: "0", flex: "1 1 40%", cursor: "pointer", textAlign: "center" }}>Contract Address:</p>
+          <p onClick={() => copyToClipboard(contractAddress)} style={{ fontSize: isMobile ? "15px" : "30px", color: "#000000", margin: "0", flex: "1 1 60%", cursor: "pointer", textAlign: "center" }}>{contractAddress}</p>
         </div>
         <div style={{ fontSize: "30px", display: "flex", alignItems: "center", width: "100%", flexWrap: "wrap", textAlign: "center" }}>
-          <p style={{ color: "#555", fontSize: "30px", fontWeight: "bold", margin: "0", flex: "1 1 40%", textAlign: "center" }}>Token Supply:</p>
-          <p style={{ color: "#000000", margin: "0", flex: "1 1 60%", textAlign: "center" }}>{tokenSupply}</p>
+          <p style={{ color: "#555", fontSize: isMobile ? "15px" : "30px", fontWeight: "bold", margin: "0", flex: "1 1 40%", textAlign: "center" }}>Token Supply:</p>
+          <p style={{ fontSize: isMobile ? "15px" : "30px", color: "#000000", margin: "0", flex: "1 1 60%", textAlign: "center" }}>{tokenSupply}</p>
         </div>
       </div>
       <Toaster position="top-right" />

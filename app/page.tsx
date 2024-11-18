@@ -33,7 +33,6 @@ export default function MemePage() {
     { name: "MEXC", url: "https://www.mexc.com/price/BitCat", icon: "/exchanges/mexc.svg" },
     { name: "Gate", url: "https://www.gate.io/price/bitcat-bitcat", icon: "/exchanges/gate.svg" },
     { name: "LBank", url: "https://www.lbank.com/trade/bitcat_usdt", icon: "/exchanges/lbank.svg" },
-    { name: "AscendEx", url: "https://ascendex.com/en/cashtrade-spottrading/usdt/bitcat", icon: "/exchanges/ascendex.svg" },
   ])
 
   useEffect(() => {

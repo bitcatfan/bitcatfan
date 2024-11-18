@@ -161,7 +161,7 @@ export default function MemePage() {
   const [isTabListOpen, setIsTabListOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const contractAddress = "4j9bDg7iWNah1Qa61rrqwWZMtEdqV3fV56SzyhfNpump";
-  const tokenSupply = "1,000,000.000";
+  const tokenSupply = "1,000,000,000";
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);

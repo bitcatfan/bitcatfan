@@ -1,162 +1,18 @@
-
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Tweet } from "react-tweet";
-import styled from "styled-components";
+import toast, { Toaster } from "react-hot-toast";
 
-const Container = styled.div`
-  max-width: 100vw;
-  width: 100vw;
-  overflow-x: hidden;
-  margin: 0 auto;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  background-image: url("/icons/bg.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-`;
-
-const MobileMenuButtonContainer = styled.div`
-  align-self: flex-end;
-`;
-
-const MobileMenuButton = styled.button`
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-`;
-
-const DesktopTabContainer = styled.div`
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  flex-wrap: wrap;
-`;
-
-const TabLink = styled.a`
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #0070f3;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 30px;
-  flex: 1 1 calc(16% - 10px);
-  justify-content: center;
-  min-width: 100px;
-`;
-
-const TabIcon = styled(Image)`
-  margin-right: 8px;
-`;
-
-const MobileTabList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  background: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
-  width: 100%;
-  max-width: 300px;
-  position: absolute;
-  top: 50px;
-  right: 20px;
-  z-index: 10;
-`;
-
-
-const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: flex-start;
-  width: 100%;
-`;
-
-const InfoRow = styled.div`
-  font-size: 30px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-  text-align: center;
-`;
-
-const Label = styled.p`
-  color: #555;
-  font-size: 30px;
-  font-weight: bold;
-  margin: 0;
-  flex: 1 1 40%;
-  cursor: pointer;
-  text-align: center;
-`;
-
-const Value = styled.p`
-  color: #000000;
-  margin: 0;
-  flex: 1 1 60%;
-  cursor: pointer;
-  text-align: center;
-`;
-
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  max-width: 1200px;
-  width: 100%;
-  gap: 20px;
-  padding: 20px;
-`;
-
-const LeftContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  max-width: 600px;
-  padding: 20px;
-`;
-
-const TitleText = styled.h1`
-  font-size: 60px;
-  font-weight: bold;
-  color: #333;
-  margin: 0;
-  text-align: left;
-`;
-
-const IntroText = styled.p`
-  font-size: 30px;
-  color: #333;
-  text-align: left;
-  margin-top: 10px;
-  line-height: 1.5;
-  max-width: 500px;
-  white-space: normal;
-`;
 export default function MemePage() {
   const [tabs] = useState([
     { name: "CoinMarketCap", url: "https://coinmarketcap.com/dexscan/solana/EJUgQQABcKXEiERGkUFXM45swGvSFoi8p7fnAcyErTDK/", icon: "/icons/coinmarketcap.svg" },
     { name: "DexScreener", url: "https://dexscreener.com/solana/ejugqqabckxeiergkufxm45swgvsfoi8p7fnacyertdk", icon: "/icons/dexscreener.svg" },
-    { name: "Twitter", url: "https://x.com/Bitcoin", icon: "/icons/x.svg" },
-    { name: "Bitcoin", url: "https://bitcoin.org/", icon: "/icons/bitcoin.svg" },
+    { name: "Twitter", url: "https://x.com/bitcatfans", icon: "/icons/x.svg" },
+    { name: "Bitcoin", url: "https://x.com/Bitcoin/status/1857419117025808830", icon: "/icons/bitcoin.svg" },
     { name: "Medium", url: "https://medium.com/@bitcatfan/the-bitcat-phenomenon-a-market-revolution-combining-bitcoin-and-meme-culture-9317e79f8258", icon: "/icons/medium.svg" },
     { name: "Github", url: "https://github.com/bitcatfan/bitcatfan", icon: "/icons/github.svg" },
   ]);
-
-
 
   const [isTabListOpen, setIsTabListOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -172,64 +28,121 @@ export default function MemePage() {
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
-    alert("Contract address copied to clipboard!");
+    toast('Contract address copied to clipboard!');
   };
 
   const toggleTabList = () => setIsTabListOpen(!isTabListOpen);
 
   return (
-    <Container>
+    <div style={{
+      maxWidth: "100vw",
+      width: "100vw",
+      overflowX: "hidden",
+      margin: "0 auto",
+      padding: "10px",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "10px",
+      backgroundImage: "url('/icons/bg.svg')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat"
+    }}>
       {isMobile ? (
-        <MobileMenuButtonContainer>
-          <MobileMenuButton onClick={toggleTabList}>
+        <div style={{ alignSelf: "flex-end" }}>
+          <button style={{ background: "transparent", border: "none", cursor: "pointer", padding: "8px" }} onClick={toggleTabList}>
             <Image src="/icons/menu.svg" alt="Menu" width={30} height={30} />
-          </MobileMenuButton>
-        </MobileMenuButtonContainer>
+          </button>
+        </div>
       ) : (
-        <DesktopTabContainer>
+        <div style={{ display: "flex", gap: "10px", flexDirection: "row", marginBottom: "20px", width: "100%", flexWrap: "wrap" }}>
           {tabs.map((tab, index) => (
-            <TabLink key={index} href={tab.url} target="_blank" rel="noopener noreferrer">
-              <TabIcon src={tab.icon} alt={`${tab.name} Icon`} width={40} height={40} />
-              {tab.name}
-            </TabLink>
+            <a key={index} href={tab.url} target="_blank" rel="noopener noreferrer" style={{
+              display: "flex",
+              alignItems: "center",
+              padding: "10px",
+              borderRadius: "5px",
+              backgroundColor: "#0070f3",
+              color: "#fff",
+              textDecoration: "none",
+              fontWeight: "bold",
+              fontSize: "30px",
+              flex: "1 1 calc(16% - 10px)",
+              justifyContent: "center",
+              minWidth: "100px"
+            }}>
+
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <Image src={tab.icon} alt={`${tab.name} Icon`} width={40} height={40} />
+                {tab.name}
+              </div>
+            </a>
           ))}
-        </DesktopTabContainer>
+        </div>
       )}
 
       {isMobile && isTabListOpen && (
-        <MobileTabList>
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "5px",
+          background: "#f0f0f0",
+          padding: "10px",
+          borderRadius: "5px",
+          width: "100%",
+          maxWidth: "300px",
+          position: "absolute",
+          top: "50px",
+          right: "20px",
+          zIndex: 10
+        }}>
           {tabs.map((tab, index) => (
-            <TabLink key={index} href={tab.url} target="_blank" rel="noopener noreferrer">
-              <TabIcon src={tab.icon} alt={`${tab.name} Icon`} width={20} height={20} />
+            <a key={index} href={tab.url} target="_blank" rel="noopener noreferrer" style={{
+              display: "flex",
+              alignItems: "center",
+              padding: "10px",
+              borderRadius: "5px",
+              backgroundColor: "#0070f3",
+              color: "#fff",
+              textDecoration: "none",
+              fontWeight: "bold",
+              fontSize: "30px",
+              flex: "1 1 calc(16% - 10px)",
+              justifyContent: "center",
+              minWidth: "100px"
+            }}>
+              <Image src={tab.icon} alt={`${tab.name} Icon`} width={20} height={20} />
               {tab.name}
-            </TabLink>
+            </a>
           ))}
-        </MobileTabList>
+        </div>
       )}
 
-      <ContentWrapper>
-        <LeftContentWrapper>
-          <TitleText>
+      <div style={{ display: "flex", flexDirection: "row", alignItems: "flex-start", maxWidth: "1200px", width: "100%", gap: "20px", padding: "20px" }}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", maxWidth: "600px", padding: "20px" }}>
+          <h1 style={{ fontSize: "60px", fontWeight: "bold", color: "#333", margin: "0", textAlign: "left" }}>
             $BITCAT
-          </TitleText>
-          <IntroText>
+          </h1>
+          <p style={{ fontSize: "30px", color: "#333", textAlign: "left", marginTop: "10px", lineHeight: 1.5, maxWidth: "500px", whiteSpace: "normal" }}>
             The perfect fusion of Bitcoin and meme coins - introducing BITCAT, the Bitcoin mascot. All aboard!
-          </IntroText>
-        </LeftContentWrapper>
+          </p>
+        </div>
 
         <Tweet id="1857419117025808830" />
-      </ContentWrapper>
+      </div>
 
-      <InfoContainer>
-        <InfoRow>
-          <Label>Contract Address:</Label>
-          <Value onClick={() => copyToClipboard(contractAddress)}>{contractAddress} </Value>
-        </InfoRow>
-        <InfoRow>
-          <Label>Token Supply:</Label>
-          <Value>{tokenSupply}</Value>
-        </InfoRow>
-      </InfoContainer>
-    </Container>
+      <div style={{ display: "flex", flexDirection: "column", gap: "5px", alignItems: "flex-start", width: "100%" }}>
+        <div style={{ fontSize: "30px", display: "flex", alignItems: "center", width: "100%", flexWrap: "wrap", textAlign: "center" }}>
+          <p style={{ color: "#555", fontSize: "30px", fontWeight: "bold", margin: "0", flex: "1 1 40%", cursor: "pointer", textAlign: "center" }}>Contract Address:</p>
+          <p onClick={() => copyToClipboard(contractAddress)} style={{ color: "#000000", margin: "0", flex: "1 1 60%", cursor: "pointer", textAlign: "center" }}>{contractAddress}</p>
+        </div>
+        <div style={{ fontSize: "30px", display: "flex", alignItems: "center", width: "100%", flexWrap: "wrap", textAlign: "center" }}>
+          <p style={{ color: "#555", fontSize: "30px", fontWeight: "bold", margin: "0", flex: "1 1 40%", textAlign: "center" }}>Token Supply:</p>
+          <p style={{ color: "#000000", margin: "0", flex: "1 1 60%", textAlign: "center" }}>{tokenSupply}</p>
+        </div>
+      </div>
+      <Toaster position="top-right" />
+    </div>
   );
 }

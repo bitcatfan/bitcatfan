@@ -4,9 +4,15 @@ import Image from "next/image";
 import { Tweet } from "react-tweet";
 import toast, { Toaster } from "react-hot-toast";
 
+interface Exchange {
+  name: string;
+  icon: string;
+  url: string;
+}
+
 export default function MemePage() {
   const [tabs] = useState([
-    { name: "CoinMarketCap", url: "https://coinmarketcap.com/dexscan/solana/EJUgQQABcKXEiERGkUFXM45swGvSFoi8p7fnAcyErTDK/", icon: "/icons/coinmarketcap.svg" },
+    { name: "CMC", url: "https://coinmarketcap.com/dexscan/solana/EJUgQQABcKXEiERGkUFXM45swGvSFoi8p7fnAcyErTDK/", icon: "/icons/coinmarketcap.svg" },
     { name: "DexScreener", url: "https://dexscreener.com/solana/ejugqqabckxeiergkufxm45swgvsfoi8p7fnacyertdk", icon: "/icons/dexscreener.svg" },
     { name: "Twitter", url: "https://x.com/bitcatfans", icon: "/icons/x.svg" },
     { name: "Bitcoin", url: "https://x.com/Bitcoin/status/1857419117025808830", icon: "/icons/bitcoin.svg" },
@@ -18,6 +24,17 @@ export default function MemePage() {
   const [isMobile, setIsMobile] = useState(false);
   const contractAddress = "4j9bDg7iWNah1Qa61rrqwWZMtEdqV3fV56SzyhfNpump";
   const tokenSupply = "1,000,000,000";
+
+  const [exchanges] = useState<Exchange[]>([
+    { name: "Moonshot", url: "https://moonshot.money/3S9xFzru6ub9TqiEOgXlqhjX?ref=p4IqaqTrT9", icon: "/exchanges/moonshot.svg" },
+    { name: "OKX", url: "https://www.okx.com/zh-hans/web3/detail/501/4j9bDg7iWNah1Qa61rrqwWZMtEdqV3fV56SzyhfNpump", icon: "/exchanges/okx.svg" },
+    { name: "Jupiter", url: "https://jup.ag/swap/SOL-4j9bDg7iWNah1Qa61rrqwWZMtEdqV3fV56SzyhfNpump", icon: "/exchanges/jupiter.svg" },
+    { name: "CoinEX", url: "https://www.coinex.com/en/exchange/bitcat-usdt", icon: "/exchanges/coinex.svg" },
+    { name: "MEXC", url: "https://www.mexc.com/price/BitCat", icon: "/exchanges/mexc.svg" },
+    { name: "Gate", url: "https://www.gate.io/price/bitcat-bitcat", icon: "/exchanges/gate.svg" },
+    { name: "LBank", url: "https://www.lbank.com/trade/bitcat_usdt", icon: "/exchanges/lbank.svg" },
+    { name: "AscendEx", url: "https://ascendex.com/en/cashtrade-spottrading/usdt/bitcat", icon: "/exchanges/ascendex.svg" },
+  ])
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -32,6 +49,11 @@ export default function MemePage() {
   };
 
   const toggleTabList = () => setIsTabListOpen(!isTabListOpen);
+
+  const handleClick = (exchange: Exchange) => {
+    window.location.href = exchange.url; 
+    console.log(`Navigating to ${exchange.name}`);
+  };
 
   return (
     <div style={{
@@ -110,7 +132,8 @@ export default function MemePage() {
               fontSize: "30px",
               flex: "1 1 calc(16% - 10px)",
               justifyContent: "center",
-              minWidth: "100px"
+              minWidth: "100px",
+              gap: "10px"
             }}>
               <Image src={tab.icon} alt={`${tab.name} Icon`} width={20} height={20} />
               {tab.name}
@@ -118,6 +141,8 @@ export default function MemePage() {
           ))}
         </div>
       )}
+
+
 
       <div style={{ display: "flex", flexDirection: "row", alignItems: "flex-start", maxWidth: "1200px", width: "100%", gap: "20px", padding: "20px" }}>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", maxWidth: "600px", padding: "20px" }}>
@@ -127,6 +152,37 @@ export default function MemePage() {
           <p style={{ fontSize: "30px", color: "#333", textAlign: "left", marginTop: "10px", lineHeight: 1.5, maxWidth: "500px", whiteSpace: "normal" }}>
             The perfect fusion of Bitcoin and meme coins - introducing BITCAT, the Bitcoin mascot. All aboard!
           </p>
+
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: '20px',
+            padding: '20px',
+
+          }}>
+            {exchanges.map((exchange, index) => (
+              <div key={index}
+                onClick={() => handleClick(exchange)}
+                
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  cursor: 'pointer',
+                }}>
+                <Image src={exchange.icon} alt={`${exchange.name} icon`} width={50} height={50} />
+                <span style={{
+                  fontSize: '40px',
+                  fontWeight: 'bold',
+                  color: '#000',
+                }}>
+                  {exchange.name}
+                </span>
+              </div>
+            ))}
+          </div>
+
         </div>
 
         <Tweet id="1857419117025808830" />

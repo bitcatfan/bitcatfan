@@ -25,11 +25,9 @@ const styles = {
     footer: {
         textAlign: 'center' as const,
         padding: '1rem',
-        borderTop: '1px solid #ddd',
         position: 'relative' as const,
         bottom: 0,
         width: '100%',
-
     },
     text: {
         margin: 0,

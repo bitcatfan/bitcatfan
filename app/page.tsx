@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Tweet } from "react-tweet";
 import toast, { Toaster } from "react-hot-toast";
+import { Footer } from "./Footer";
+import useIsMobile from "./hooks/useIsMobile";
 
 interface Exchange {
   name: string;
@@ -21,7 +23,7 @@ export default function MemePage() {
   ]);
 
   const [isTabListOpen, setIsTabListOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
   const contractAddress = "4j9bDg7iWNah1Qa61rrqwWZMtEdqV3fV56SzyhfNpump";
   const tokenSupply = "1,000,000,000";
 
@@ -35,13 +37,6 @@ export default function MemePage() {
     { name: "Gate", url: "https://www.gate.io/price/bitcat-bitcat", icon: "/exchanges/gate.svg" },
     { name: "LBank", url: "https://www.lbank.com/trade/bitcat_usdt", icon: "/exchanges/lbank.svg" },
   ])
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -211,6 +206,7 @@ export default function MemePage() {
           <p style={{ fontSize: isMobile ? "15px" : "30px", color: "#000000", margin: "0", flex: "1 1 60%", textAlign: "center" }}>{tokenSupply}</p>
         </div>
       </div>
+      <Footer></Footer>
       <Toaster position="top-right" />
     </div>
   );

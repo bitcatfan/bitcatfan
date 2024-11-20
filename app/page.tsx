@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Tweet } from "react-tweet";
 import toast, { Toaster } from "react-hot-toast";

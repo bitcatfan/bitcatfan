@@ -34,7 +34,7 @@ export default function MemePage() {
     { name: "Jupiter", url: "https://jup.ag/swap/SOL-4j9bDg7iWNah1Qa61rrqwWZMtEdqV3fV56SzyhfNpump", icon: "/exchanges/jupiter.svg" },
     { name: "CoinEX", url: "https://www.coinex.com/en/exchange/bitcat-usdt", icon: "/exchanges/coinex.svg" },
     { name: "MEXC", url: "https://www.mexc.com/price/BitCat", icon: "/exchanges/mexc.svg" },
-    { name: "Gate", url: "https://www.gate.io/price/bitcat-bitcat", icon: "/exchanges/gate.svg" },
+    { name: "Gate", url: "https://www.gate.io/zh/trade/BITCAT_USDT", icon: "/exchanges/gate.svg" },
     { name: "LBank", url: "https://www.lbank.com/trade/bitcat_usdt", icon: "/exchanges/lbank.svg" },
   ])
 
